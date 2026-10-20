@@ -1,0 +1,336 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080810">
+<meta name="description" content="Official TOSHIRO VIP social links and community.">
+<title>TOSHIRO VIP | Official</title>
+<style>
+:root{--bg:#080810;--panel:#11111d;--text:#f7f7ff;--muted:#a3a3b8;--line:#28283b}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% 0%,#25204b 0%,#0b0b16 42%,#060609 100%);color:var(--text);font-family:Inter,system-ui,-apple-system,Arial,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:-50%;pointer-events:none;background:conic-gradient(from 0deg,transparent,#7b3cff22,#00e5ff20,#ff2ca822,transparent);filter:blur(90px);animation:spin 18s linear infinite;z-index:-1}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes rainbow{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.wrap{width:min(100% - 32px,480px);margin:0 auto;padding:25px 0 35px}
+.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:35px}
+.brand{font-size:12px;font-weight:900;letter-spacing:3px}
+.brand span{background:linear-gradient(90deg,#ff4bd8,#9c74ff,#00eaff,#ff4bd8);background-size:200%;color:transparent;background-clip:text;animation:rainbow 5s linear infinite}
+.settings{border:1px solid #ffffff20;background:#ffffff0a;color:#fff;border-radius:12px;padding:10px 13px;font-weight:700;cursor:pointer}
+.profile{text-align:center;animation:rise .7s ease both}
+.avatar-wrap{width:132px;height:132px;margin:0 auto 20px;padding:4px;border-radius:50%;background:linear-gradient(135deg,#ff37d6,#8d57ff,#00e5ff,#ff37d6);background-size:250%;animation:rainbow 5s linear infinite;box-shadow:0 0 35px #a052ff35}
+.avatar{width:100%;height:100%;border-radius:50%;object-fit:cover;background:#171727;border:4px solid #090912;display:block}
+h1{font-size:clamp(29px,8vw,39px);margin:0;font-weight:1000;letter-spacing:2px}
+.gradient{background:linear-gradient(90deg,#ff4bd8,#aa83ff,#4be7ff,#ff4bd8);background-size:200%;color:transparent;background-clip:text;animation:rainbow 5s linear infinite}
+.tag{margin:12px 0 0;color:var(--muted);font-size:13px;line-height:1.7;white-space:pre-wrap}
+.status{display:inline-flex;align-items:center;gap:8px;margin-top:17px;padding:7px 12px;border:1px solid #39ffbd33;border-radius:30px;background:#39ffbd0c;color:#83ffd5;font-size:10px;font-weight:800;letter-spacing:1.6px}
+.dot{width:7px;height:7px;background:#4affba;border-radius:50%;box-shadow:0 0 10px #4affba}
+.section-label{font-size:10px;letter-spacing:2.5px;color:#8d8da8;font-weight:900;margin:31px 0 12px}
+.socials{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.social{border:1px solid var(--line);border-radius:16px;background:linear-gradient(145deg,#171727,#0d0d17);padding:17px 5px;text-decoration:none;color:white;text-align:center;transition:.2s}
+.social:hover{transform:translateY(-3px);border-color:#a477ff;box-shadow:0 8px 25px #784aff17}
+.social svg{width:25px;height:25px;display:block;margin:0 auto 9px}
+.social b{font-size:12px}
+.telegram{display:flex;align-items:center;gap:14px;margin-top:12px;padding:17px;border-radius:17px;text-decoration:none;color:white;background:linear-gradient(110deg,#6335d8,#347fe8,#0db8ce);box-shadow:0 8px 30px #4777ff25;transition:.2s}
+.telegram:hover{transform:translateY(-2px);filter:brightness(1.1)}
+.tg-icon{width:42px;height:42px;display:grid;place-items:center;border-radius:13px;background:#ffffff20;flex-shrink:0}
+.tg-icon svg{width:24px;height:24px}
+.tg-copy{flex:1}
+.tg-copy b{display:block;font-size:13px;letter-spacing:.5px}
+.tg-copy small{display:block;margin-top:5px;font-size:11px;opacity:.8}
+.arrow{font-size:23px}
+.card{margin-top:23px;padding:18px;border:1px solid #ffffff13;border-radius:18px;background:#ffffff06}
+.card-title{font-size:12px;letter-spacing:1px;font-weight:900}
+.card p{font-size:12px;line-height:1.8;color:var(--muted);margin:9px 0 0}
+.footer{text-align:center;margin-top:28px;color:#68687e;font-size:10px;letter-spacing:1.5px}
+.footer strong{color:#aaaac3}
+.modal{display:none;position:fixed;inset:0;z-index:10;background:#000c;overflow-y:auto;padding:20px}
+.modal.open{display:block}
+.dialog{width:min(100%,440px);margin:20px auto;padding:22px;border:1px solid #39334d;border-radius:22px;background:#10101b;box-shadow:0 20px 80px #000a}
+.dialog h2{font-size:20px;margin:0 0 7px}
+.help{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:20px}
+label{display:block;font-size:11px;color:#c3c3d8;margin:14px 0 7px;font-weight:800}
+input,textarea{width:100%;padding:12px;border:1px solid #343448;border-radius:11px;background:#090911;color:white;font:inherit;font-size:13px;outline:none}
+input:focus,textarea:focus{border-color:#9b73ff}
+textarea{min-height:75px;resize:vertical}
+.file{font-size:12px}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+.action{padding:12px;border-radius:11px;border:1px solid #35354a;background:#191929;color:white;font-weight:800;cursor:pointer}
+.action.primary{background:linear-gradient(100deg,#7a43f2,#347ce8);border:0}
+.action.full{grid-column:1/-1}
+.note{font-size:11px;color:#a7a7bc;line-height:1.7;margin-top:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">TOSHIRO <span>VIP</span></div>
+    <button class="settings" id="openSettings">OWNER SETTINGS</button>
+  </header>
+
+  <main>
+    <section class="profile">
+      <div class="avatar-wrap">
+        <img class="avatar" id="avatar" alt="TOSHIRO VIP profile picture"
+          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23151529'/%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='55' font-weight='bold' fill='%23c5a8ff'%3ET%3C/text%3E%3C/svg%3E">
+      </div>
+      <h1 id="siteName" class="gradient">TOSHIRO VIP</h1>
+      <p class="tag" id="siteBio">OFFICIAL SOCIAL LINKS
+Gaming • Community • Content Creator</p>
+      <div class="status"><span class="dot"></span> OFFICIAL COMMUNITY</div>
+    </section>
+
+    <div class="section-label">CONNECT WITH ME</div>
+    <section class="socials">
+      <a class="social" id="tiktokLink" href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3v11.2a4.2 4.2 0 1 1-4-4.2M14 3c.7 3.1 2.5 4.8 5.5 5"/></svg>
+        <b>TikTok</b>
+      </a>
+      <a class="social" id="youtubeLink" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="m10 9 5 3-5 3z" fill="currentColor" stroke="none"/></svg>
+        <b>YouTube</b>
+      </a>
+      <a class="social" id="telegramLink" href="https://t.me/" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m21 3-7 18-4-8-8-4z"/><path d="M21 3 10 13"/></svg>
+        <b>Telegram</b>
+      </a>
+    </section>
+
+    <a class="telegram" id="telegramButton" href="https://t.me/" target="_blank" rel="noopener noreferrer">
+      <div class="tg-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>
+      </div>
+      <div class="tg-copy">
+        <b>SUBSCRIBE TELEGRAM CHANNEL</b>
+        <small>Join the official community</small>
+      </div>
+      <span class="arrow">›</span>
+    </a>
+
+    <section class="card">
+      <div class="card-title">WELCOME TO MY WORLD</div>
+      <p id="welcomeText">Follow my official pages for gaming content, updates and community announcements. Use the buttons above to connect.</p>
+    </section>
+  </main>
+
+  <footer class="footer">DESIGNED FOR <strong id="footerName">TOSHIRO VIP</strong> · OFFICIAL LINKS</footer>
+</div>
+
+<div class="modal" id="settingsModal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+  <div class="dialog">
+    <h2 id="settingsTitle">Owner Settings</h2>
+    <div class="help">Update your profile and links. Changes are saved in this browser. Use EXPORT HTML to create a new website file containing your changes before uploading it to GitHub Pages.</div>
+
+    <label for="nameInput">DISPLAY NAME</label>
+    <input id="nameInput" maxlength="50" placeholder="TOSHIRO VIP">
+
+    <label for="bioInput">BIO</label>
+    <textarea id="bioInput" maxlength="250" placeholder="Gaming • Community • Content Creator"></textarea>
+
+    <label for="photoInput">PROFILE PHOTO</label>
+    <input class="file" id="photoInput" type="file" accept="image/png,image/jpeg,image/webp">
+
+    <label for="tiktokInput">TIKTOK PROFILE URL</label>
+    <input id="tiktokInput" type="url" placeholder="https://www.tiktok.com/@yourname">
+
+    <label for="youtubeInput">YOUTUBE CHANNEL URL</label>
+    <input id="youtubeInput" type="url" placeholder="https://www.youtube.com/@yourchannel">
+
+    <label for="telegramInput">TELEGRAM CHANNEL URL</label>
+    <input id="telegramInput" type="url" placeholder="https://t.me/yourchannel">
+
+    <div class="actions">
+      <button class="action" id="cancelSettings">CANCEL</button>
+      <button class="action primary" id="saveSettings">SAVE CHANGES</button>
+      <button class="action primary full" id="exportHtml">EXPORT UPDATED HTML</button>
+    </div>
+    <div class="note">Photo tip: use a reasonably sized JPG, PNG or WebP image. Your photo will be embedded in the exported HTML. Never enter passwords or private account information here.</div>
+  </div>
+</div>
+
+<script>
+const SITE_CONFIG = {
+  name: "TOSHIRO VIP",
+  bio: "OFFICIAL SOCIAL LINKS\nGaming • Community • Content Creator",
+  photo: "",
+  links: {
+    tiktok: "https://www.tiktok.com/",
+    youtube: "https://www.youtube.com/",
+    telegram: "https://t.me/"
+  }
+};
+
+const $ = id => document.getElementById(id);
+const modal = $("settingsModal");
+let currentConfig = structuredClone(SITE_CONFIG);
+let pendingPhoto = null;
+
+function validHttpUrl(value) {
+  try {
+    const u = new URL(value);
+    return u.protocol === "https:" || u.protocol === "http:";
+  } catch {
+    return false;
+  }
+}
+
+function render() {
+  $("siteName").textContent = currentConfig.name || "TOSHIRO VIP";
+  $("footerName").textContent = currentConfig.name || "TOSHIRO VIP";
+  $("siteBio").textContent = currentConfig.bio || "";
+  $("avatar").src = currentConfig.photo || SITE_CONFIG.photo ||
+    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23151529'/%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='55' font-weight='bold' fill='%23c5a8ff'%3ET%3C/text%3E%3C/svg%3E";
+
+  const pairs = [
+    ["tiktokLink", currentConfig.links.tiktok],
+    ["youtubeLink", currentConfig.links.youtube],
+    ["telegramLink", currentConfig.links.telegram],
+    ["telegramButton", currentConfig.links.telegram]
+  ];
+
+  for (const [id, url] of pairs) {
+    const el = $(id);
+    const safe = validHttpUrl(url) ? url : "https://t.me/";
+    el.href = safe;
+  }
+}
+
+function fillForm() {
+  $("nameInput").value = currentConfig.name;
+  $("bioInput").value = currentConfig.bio;
+  $("tiktokInput").value = currentConfig.links.tiktok;
+  $("youtubeInput").value = currentConfig.links.youtube;
+  $("telegramInput").value = currentConfig.links.telegram;
+  $("photoInput").value = "";
+  pendingPhoto = null;
+}
+
+function openModal() {
+  fillForm();
+  modal.classList.add("open");
+}
+
+function closeModal() {
+  modal.classList.remove("open");
+}
+
+function collectForm() {
+  const links = {
+    tiktok: $("tiktokInput").value.trim(),
+    youtube: $("youtubeInput").value.trim(),
+    telegram: $("telegramInput").value.trim()
+  };
+
+  for (const [key, value] of Object.entries(links)) {
+    if (!validHttpUrl(value)) {
+      alert("Please enter a valid HTTP or HTTPS URL for " + key + ".");
+      return null;
+    }
+  }
+
+  return {
+    name: $("nameInput").value.trim() || "TOSHIRO VIP",
+    bio: $("bioInput").value.trim(),
+    photo: pendingPhoto !== null ? pendingPhoto : currentConfig.photo,
+    links
+  };
+}
+
+function saveLocally(config) {
+  try {
+    localStorage.setItem("toshiroVipSiteConfig", JSON.stringify(config));
+  } catch (error) {
+    alert("Browser storage is full. Export your HTML and keep a backup of your photo.");
+  }
+}
+
+$("openSettings").addEventListener("click", openModal);
+$("cancelSettings").addEventListener("click", closeModal);
+modal.addEventListener("click", event => {
+  if (event.target === modal) closeModal();
+});
+
+$("photoInput").addEventListener("change", event => {
+  const file = event.target.files && event.target.files[0];
+  if (!file) return;
+
+  if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
+    alert("Please choose a JPG, PNG or WebP image.");
+    event.target.value = "";
+    return;
+  }
+
+  if (file.size > 3 * 1024 * 1024) {
+    alert("Please choose a photo smaller than 3 MB.");
+    event.target.value = "";
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = () => { pendingPhoto = reader.result; };
+  reader.onerror = () => alert("Could not read that photo. Please try again.");
+  reader.readAsDataURL(file);
+});
+
+$("saveSettings").addEventListener("click", () => {
+  const next = collectForm();
+  if (!next) return;
+
+  currentConfig = next;
+  render();
+  saveLocally(currentConfig);
+  closeModal();
+  alert("Changes saved in this browser. Export HTML and upload it to update your public website.");
+});
+
+$("exportHtml").addEventListener("click", () => {
+  const next = collectForm();
+  if (!next) return;
+
+  currentConfig = next;
+  render();
+  saveLocally(currentConfig);
+
+  let html = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+  const configScript = /const SITE_CONFIG = \{[\s\S]*?\n\};/;
+
+  const replacement = "const SITE_CONFIG = " +
+    JSON.stringify(currentConfig, null, 2) + ";";
+
+  if (!configScript.test(html)) {
+    alert("Could not prepare the HTML export. Please try again.");
+    return;
+  }
+
+  html = html.replace(configScript, replacement);
+
+  const blob = new Blob([html], {type: "text/html;charset=utf-8"});
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "index.html";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 3000);
+});
+
+try {
+  const saved = localStorage.getItem("toshiroVipSiteConfig");
+  if (saved) {
+    const parsed = JSON.parse(saved);
+    if (parsed && parsed.links && typeof parsed.name === "string") {
+      currentConfig = parsed;
+    }
+  }
+} catch (error) {
+  console.warn("Saved browser settings could not be loaded.");
+}
+
+render();
+</script>
+</body>
+</html>
